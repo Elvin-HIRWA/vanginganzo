@@ -8,9 +8,18 @@ import ContactView from '../views/Contact.vue'
 import LoginView from '../views/Login.vue'
 import RegisterView from '../views/Register.vue'
 
-import BandView from '../views/Band/Index.vue'
+// import BandView from '../views/Band/Index.vue'
 
-import AdminView from '../views/Admin/Index.vue'
+import BandView from '../views/Bands/Dashboard.vue'
+import EventsView from '../views/Bands/Event.vue'
+import NewEventView from '../views/Bands/NewEvent.vue'
+import EventUpdateView from '../views/Bands/EventUpdate.vue'
+
+import AdminView from '../views/Admins/Dashboard.vue'
+import PermissionView from '../views/Admins/Permission.vue'
+import UserView from '../views/Admins/User.vue'
+import KeyView from '../views/Admins/Key.vue'
+
 
 Vue.use(VueRouter)
 
@@ -73,12 +82,64 @@ const routes = [
       requiresAuth: true
     }
   },
+  {
+    path: '/events',
+    name: 'Events',
+    component: EventsView,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/newEvent',
+    name: 'NewEvent',
+    component: NewEventView,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/event/:id',
+    name: 'EventUpdate',
+    component: EventUpdateView,
+    meta: {
+      requiresAuth: true
+    }
+  },
+
+
+
+
 
   // Admin
   {
     path: '/admin',
     name: 'admin',
     component: AdminView,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/permissions',
+    name: 'Permissions',
+    component: PermissionView,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/keys',
+    name: 'Keys',
+    component: KeyView,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/users',
+    name: 'Users',
+    component: UserView,
     meta: {
       requiresAuth: true
     }
