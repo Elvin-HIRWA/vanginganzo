@@ -8,15 +8,19 @@
 <script>
 import axios from "axios";
 export default {
+  mounted () {
+    this.$Progress.finish()
+  },
   created() {
-    this.$store.commit("initializeStore");
+    
+    this.$store.commit('initializeStore')
 
-    const token = this.$store.state.token;
+    const token = this.$store.state.token
 
     if (token) {
-      axios.defaults.headers.common["Authorization"] = "Bearer " + token;
+      axios.defaults.headers.common['Authorization'] = "Bearer " + token
     } else {
-      axios.defaults.headers.common["Authorization"] = "";
+      axios.defaults.headers.common['Authorization'] = ""
     }
   },
 };

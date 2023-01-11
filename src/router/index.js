@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import store from '../store' 
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 import IndexView from '../views/Index.vue'
 import EventView from '../views/Event.vue'
 import BlogView from '../views/Blog.vue'
@@ -101,13 +100,13 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  const isAuthenticated = store.state.isAuthenticated
+  const isAuthenticated = store.state.isAuthenticated || localStorage.getItem('token')
   const permissionName = store.state.permissionName
-  if (to.matched.some(record => record.meta.requiresAuth) && isAuthenticated === false) {
+  if (to.matched.some(record => record.meta.requiresAuth) && !isAuthenticated) {
     next({ name: 'Login'});
-  } else if(permissionName === 'Admin' && to.matched.some(record => record.meta.requiresUnauth) && isAuthenticated === true){
+  } else if(permissionName === 'Admin' && to.matched.some(record => record.meta.requiresUnauth) && isAuthenticated){
     next({ name: 'Admin'});
-  } else if(permissionName === 'Band' && to.matched.some(record => record.meta.requiresUnauth) && isAuthenticated === true){
+  } else if(permissionName === 'Band' && to.matched.some(record => record.meta.requiresUnauth) && isAuthenticated){
     next({ name: 'Band'});
   } else {
     next()
