@@ -68,6 +68,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
 export default {
@@ -95,7 +96,7 @@ export default {
       };
       try {
         const response = await axios.post("/api/auth/login", data);
-        this.$Progress.finish();
+        
         
         const token = response.data.token;
 
@@ -122,14 +123,19 @@ export default {
           const toPath = this.$route.query.to || "/admin";
 
           this.$router.push(toPath).catch(()=>{});
+          this.$Progress.finish();
 
         }else if(permissionName === "Band"){
 
           const toPath = this.$route.query.to || "/band";
           
           this.$router.push(toPath).catch(()=>{});
+          this.$Progress.finish();
         }
       } catch (error) {
+        // if(error.response.status === 403){
+          this.$noty.error("invalid Data");
+        // }
         this.$Progress.fail();
       }
     },

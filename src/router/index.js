@@ -19,32 +19,50 @@ const routes = [
   {
     path: '/',
     name: 'index',
-    component: IndexView
+    component: IndexView,
+    meta: {
+      requiresUnauth: true
+    }
   },
   {
     path: '/event',
     name: 'event',
-    component: EventView
+    component: EventView,
+    meta: {
+      requiresUnauth: true
+    }
   },
   {
     path: '/blog',
     name: 'blog',
-    component: BlogView
+    component: BlogView,
+    meta: {
+      requiresUnauth: true
+    }
   },
   {
     path: '/contact',
     name: 'contact',
-    component: ContactView
+    component: ContactView,
+    meta: {
+      requiresUnauth: true
+    }
   },
   {
     path: '/login',
     name: 'login',
-    component: LoginView
+    component: LoginView,
+    meta: {
+      requiresUnauth: true
+    }
   },
   {
     path: '/register',
     name: 'register',
-    component: RegisterView
+    component: RegisterView,
+    meta: {
+      requiresUnauth: true
+    }
   },
 
   // Band
@@ -83,13 +101,13 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  const isAuthenticated = store.state.isAuthenticated || localStorage.getItem('token')
+  const isAuthenticated = store.state.isAuthenticated
   const permissionName = store.state.permissionName
-  if (to.matched.some(record => record.meta.requiresAuth) && !isAuthenticated) {
+  if (to.matched.some(record => record.meta.requiresAuth) && isAuthenticated === false) {
     next({ name: 'Login'});
-  } else if(permissionName === 'Admin' && to.matched.some(record => record.meta.requiresUnauth) && isAuthenticated){
+  } else if(permissionName === 'Admin' && to.matched.some(record => record.meta.requiresUnauth) && isAuthenticated === true){
     next({ name: 'Admin'});
-  } else if(permissionName === 'Band' && to.matched.some(record => record.meta.requiresUnauth) && isAuthenticated){
+  } else if(permissionName === 'Band' && to.matched.some(record => record.meta.requiresUnauth) && isAuthenticated === true){
     next({ name: 'Band'});
   } else {
     next()

@@ -11,10 +11,10 @@ import flatPickr from 'vue-flatpickr-component';
 import 'flatpickr/dist/flatpickr.css';
 
 Vue.component("data-table", DataTable);
-Vue.use(flatPickr)
-Vue.use(VueNoty)
+Vue.use(flatPickr);
+Vue.use(VueNoty);
 const options = {
-  color: 'white',
+  color: 'yellow',
   failedColor: 'red',
   thickness: '5px',
   transition: {
@@ -25,15 +25,15 @@ const options = {
   autoRevert: true,
   location: 'top',
   inverse: false
-}
+};
 
-axios.defaults.baseURL = process.env.VUE_APP_API_URL
+axios.defaults.baseURL = process.env.VUE_APP_API_URL;
 
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
-Vue.use(VueProgressBar, options)
+Vue.use(VueProgressBar, options);
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 new Vue({
   router,

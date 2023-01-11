@@ -1,9 +1,23 @@
 <template>
   <div>
     <router-view/>
+    <vue-progress-bar></vue-progress-bar>
   </div>
 </template>
 
-<style>
+<script>
+import axios from "axios";
+export default {
+  created() {
+    this.$store.commit("initializeStore");
 
-</style>
+    const token = this.$store.state.token;
+
+    if (token) {
+      axios.defaults.headers.common["Authorization"] = "Bearer " + token;
+    } else {
+      axios.defaults.headers.common["Authorization"] = "";
+    }
+  },
+};
+</script>
