@@ -25,7 +25,7 @@
                 >
                   <div class="icon-box icon-box-pink">
                     <!-- <div class="icon"><i class="bx bxl-dribbble"></i></div> -->
-                    <div><img :src="data.image_path" alt="image"></div>
+                    <div><img :src="'http://localhost:89/' + data.img_path" alt="image"></div>
                     <h4 class="title"><a href="">{{data.name}}</a></h4>
                     <p class="description">
                       Voluptatum deleniti atque corrupti quos dolores et quas
@@ -106,7 +106,7 @@ export default {
   data() {
     return {
       entertainmentData: [],
-      imageUrl: "http://localhost:89/",
+      urlImage: null,
     };
   },
   components: {
@@ -115,6 +115,26 @@ export default {
     Footer,
   },
   methods: {
+    async getImage(fileName){
+      this.$Progress.start();
+
+      // const response = await axios.get(`/${fileName}`);
+
+      // console.log(response);
+
+      // return response
+
+      // try {
+        
+      //   this.$Progress.finish();
+      
+
+      //   console.log(this.entertainmentData);
+      // } catch (error) {
+      //   this.$Progress.fail();
+      //   this.clicked = false;
+      // }
+    },
     async submitForm() {
       this.$Progress.start();
 
@@ -122,8 +142,9 @@ export default {
         const response = await axios.get("/api/entertainments/get");
         this.$Progress.finish();
 
+        this.urlImage = '"'+this.$store.state.urlPath+'/'
+
         response.data.forEach((el) => {
-          const images = this.imageUrl.concat(el.img_path);
           this.entertainmentData.push({
             id: el.id,
             name: el.name,
@@ -133,8 +154,6 @@ export default {
             img_path: el.img_path,
           });
         });
-
-        console.log(this.entertainmentData);
       } catch (error) {
         this.$Progress.fail();
         this.clicked = false;
@@ -162,8 +181,6 @@ export default {
     },
     async deleteEvent(id) {
       this.$Progress.start()
-
-      console.log(id);
      
       try {
         await axios.delete(`/api/entertainments/delete/${id}`);

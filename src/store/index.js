@@ -9,15 +9,17 @@ export default new Vuex.Store({
     token: null,
     permissionName: null,
     userID: null,
+    urlPath: null
   },
   getters: {
   },
   mutations: {
     initializeStore(state) {
-      if (localStorage.getItem('token') && localStorage.getItem('permissionName') && localStorage.getItem('userID')) {
+      if (localStorage.getItem('token') && localStorage.getItem('permissionName') && localStorage.getItem('userID') && localStorage.getItem('urlPath')) {
         state.token = localStorage.getItem('token')
         state.permissionName = localStorage.getItem('permissionName')
         state.userID = localStorage.getItem('userID')
+        state.urlPath = localStorage.getItem('urlPath')
         state.isAuthenticated = true
       } else {
         state.token = null
@@ -26,6 +28,9 @@ export default new Vuex.Store({
         state.isAuthenticated = false
       }
     },
+    // setUrlPath(state, urlPath) {
+    //   state.urlPath = urlPath
+    // },
     setUserID(state, userID) {
       state.userID = userID
       state.isAuthenticated = true
