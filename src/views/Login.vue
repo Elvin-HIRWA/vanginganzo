@@ -11,7 +11,7 @@
               <h3>Welcome Back</h3>
               <!-- Login Form -->
               <div class="login-form">
-                <form action="#" method="post">
+                <form @submit.prevent="submitForm">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
                     <input
@@ -20,6 +20,7 @@
                       id="exampleInputEmail1"
                       aria-describedby="emailHelp"
                       placeholder="Enter E-mail"
+                      v-model="email"
                     />
                     <small id="emailHelp" class="form-text text-muted"
                       ><i class="fa fa-lock mr-2"></i>We'll never share your
@@ -33,6 +34,7 @@
                       class="form-control"
                       id="exampleInputPassword1"
                       placeholder="Password"
+                      v-model="password"
                     />
                   </div>
                   <button type="submit" class="btn oneMusic-btn mt-30">
@@ -72,6 +74,65 @@ export default {
   components: {
     Header,
     Footer,
+  },
+
+  data() {
+    return {
+      email: "",
+      password: "",
+    };
+  },
+  methods: {
+    async submitForm() {
+      this.$Progress.start();
+      axios.defaults.headers.common["Authorization"] = "";
+
+      localStorage.removeItem("token");
+
+      const data = {
+        email: this.email,
+        password: this.password,
+      };
+      try {
+        const response = await axios.post("/api/auth/login", data);
+        this.$Progress.finish();
+        
+        const token = response.data.token;
+
+        const userID = response.data.userID;
+
+        const permissionName = response.data.permissionName;
+
+        localStorage.setItem("token", token);
+
+        localStorage.setItem("permissionName", permissionName);
+
+        localStorage.setItem("userID", userID);
+
+        this.$store.commit("setToken", token);
+
+        this.$store.commit("setUserID", userID);
+
+        this.$store.commit("setPermissionName", permissionName);
+
+        axios.defaults.headers.common["Authorization"] = "Bearer " + token;
+
+        if(permissionName === "Admin"){
+
+          const toPath = this.$route.query.to || "/admin";
+
+          this.$router.push(toPath).catch(()=>{});
+
+        }else if(permissionName === "Band"){
+
+          const toPath = this.$route.query.to || "/band";
+          
+          this.$router.push(toPath).catch(()=>{});
+        }
+      } catch (error) {
+        this.$Progress.fail();
+      }
+    },
   },
 };
 </script>

@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import store from '../store' 
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import IndexView from '../views/Index.vue'
@@ -7,6 +8,10 @@ import BlogView from '../views/Blog.vue'
 import ContactView from '../views/Contact.vue'
 import LoginView from '../views/Login.vue'
 import RegisterView from '../views/Register.vue'
+
+import BandView from '../views/Band/Index.vue'
+
+import AdminView from '../views/Admin/Index.vue'
 
 Vue.use(VueRouter)
 
@@ -41,6 +46,26 @@ const routes = [
     name: 'register',
     component: RegisterView
   },
+
+  // Band
+  {
+    path: '/band',
+    name: 'band',
+    component: BandView,
+    meta: {
+      requiresAuth: true
+    }
+  },
+
+  // Admin
+  {
+    path: '/admin',
+    name: 'admin',
+    component: AdminView,
+    meta: {
+      requiresAuth: true
+    }
+  },
   {
     path: '/about',
     name: 'about',
@@ -55,6 +80,20 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  const isAuthenticated = store.state.isAuthenticated || localStorage.getItem('token')
+  const permissionName = store.state.permissionName
+  if (to.matched.some(record => record.meta.requiresAuth) && !isAuthenticated) {
+    next({ name: 'Login'});
+  } else if(permissionName === 'Admin' && to.matched.some(record => record.meta.requiresUnauth) && isAuthenticated){
+    next({ name: 'Admin'});
+  } else if(permissionName === 'Band' && to.matched.some(record => record.meta.requiresUnauth) && isAuthenticated){
+    next({ name: 'Band'});
+  } else {
+    next()
+  }
 })
 
 export default router
