@@ -1,14 +1,45 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import IndexView from '../views/Index.vue'
+import EventView from '../views/Event.vue'
+import BlogView from '../views/Blog.vue'
+import ContactView from '../views/Contact.vue'
+import LoginView from '../views/Login.vue'
+import RegisterView from '../views/Register.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    name: 'index',
+    component: IndexView
+  },
+  {
+    path: '/event',
+    name: 'event',
+    component: EventView
+  },
+  {
+    path: '/blog',
+    name: 'blog',
+    component: BlogView
+  },
+  {
+    path: '/contact',
+    name: 'contact',
+    component: ContactView
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: LoginView
+  },
+  {
+    path: '/register',
+    name: 'register',
+    component: RegisterView
   },
   {
     path: '/about',
