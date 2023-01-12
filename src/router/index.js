@@ -8,7 +8,6 @@ import ContactView from '../views/Contact.vue'
 import LoginView from '../views/Login.vue'
 import RegisterView from '../views/Register.vue'
 
-// import BandView from '../views/Band/Index.vue'
 
 import BandView from '../views/Bands/Dashboard.vue'
 import EventsView from '../views/Bands/Event.vue'
@@ -26,7 +25,7 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'index',
+    name: 'Index',
     component: IndexView,
     meta: {
       requiresUnauth: true
@@ -34,7 +33,7 @@ const routes = [
   },
   {
     path: '/event',
-    name: 'event',
+    name: 'Event',
     component: EventView,
     meta: {
       requiresUnauth: true
@@ -42,7 +41,7 @@ const routes = [
   },
   {
     path: '/blog',
-    name: 'blog',
+    name: 'Blog',
     component: BlogView,
     meta: {
       requiresUnauth: true
@@ -50,7 +49,7 @@ const routes = [
   },
   {
     path: '/contact',
-    name: 'contact',
+    name: 'Contact',
     component: ContactView,
     meta: {
       requiresUnauth: true
@@ -58,7 +57,7 @@ const routes = [
   },
   {
     path: '/login',
-    name: 'login',
+    name: 'Login',
     component: LoginView,
     meta: {
       requiresUnauth: true
@@ -66,7 +65,7 @@ const routes = [
   },
   {
     path: '/register',
-    name: 'register',
+    name: 'Register',
     component: RegisterView,
     meta: {
       requiresUnauth: true
@@ -76,7 +75,7 @@ const routes = [
   // Band
   {
     path: '/band',
-    name: 'band',
+    name: 'Band',
     component: BandView,
     meta: {
       requiresAuth: true

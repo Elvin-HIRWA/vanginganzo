@@ -88,6 +88,11 @@ export default {
 }
 </script>
 
-<style>
-
-</style>
+<style scoped>
+  @import "https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css";
+  @import "../../assets/Assets1/css/styles.css";
+  @import "https://use.fontawesome.com/releases/v6.1.0/js/all.js";
+  @import "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js";
+  @import "https://cdn.jsdelivr.net/npm/simple-datatables@latest";
+  @import "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js";
+  </style>

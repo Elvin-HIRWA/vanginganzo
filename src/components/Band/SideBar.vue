@@ -20,14 +20,23 @@
       </div>
       <div class="sb-sidenav-footer">
         <div class="small">Logged in as:</div>
-        Start Bootstrap
+        {{name}}
       </div>
     </nav>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data(){
+    return{
+      name: null,
+    }
+  },
+  mounted(){
+    this.name = this.$store.state.permissionName
+  }
+};
 </script>
 
 <style>
