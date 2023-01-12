@@ -115,26 +115,6 @@ export default {
     Footer,
   },
   methods: {
-    async getImage(fileName){
-      this.$Progress.start();
-
-      // const response = await axios.get(`/${fileName}`);
-
-      // console.log(response);
-
-      // return response
-
-      // try {
-        
-      //   this.$Progress.finish();
-      
-
-      //   console.log(this.entertainmentData);
-      // } catch (error) {
-      //   this.$Progress.fail();
-      //   this.clicked = false;
-      // }
-    },
     async submitForm() {
       this.$Progress.start();
 

@@ -138,7 +138,7 @@ export default {
       try {
         const response = await axios.post("/api/entertainments/create", formData, { headers: {'Content-Type': 'multipart/form-data' }});
         this.$Progress.finish();
-        this.$router.push("/event").catch(()=>{});
+        this.$router.push("/events").catch(()=>{});
         
       } catch (error) {
         this.$Progress.fail();
