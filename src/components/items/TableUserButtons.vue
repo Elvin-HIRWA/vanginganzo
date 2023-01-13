@@ -1,13 +1,7 @@
 <template>
   <div class="row">
     <!-- <div class="card mb-4"> -->
-      <button class=" col-3 btn btn-success" @click="triggerSomeAction('view')">
-        <i class="fa fa-eye"></i>
-        <!-- trash icon -->
-      </button>
-    <!-- </div> -->
-    <!-- <div class="card mb-4"> -->
-      <button class="col-3 btn btn-info" @click="updateUser('edit')">
+      <button class="col-3 btn btn-success" @click="updateUser('edit')">
         <i class="fa fa-edit"></i>
       </button>
     <!-- </div> -->

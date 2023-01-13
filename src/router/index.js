@@ -18,6 +18,8 @@ import AdminView from '../views/Admins/Dashboard.vue'
 import PermissionView from '../views/Admins/Permission.vue'
 import UserView from '../views/Admins/User.vue'
 import KeyView from '../views/Admins/Key.vue'
+import PermissionUpdateView from '../views/Admins/PermissionUpdate.vue'
+import KeySend from '../views/Admins/KeySend.vue'
 
 
 Vue.use(VueRouter)
@@ -128,9 +130,26 @@ const routes = [
     }
   },
   {
+    path: '/permission-update/:id',
+    name: 'PermissionUpdate',
+    component: PermissionUpdateView,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
     path: '/keys',
     name: 'Keys',
     component: KeyView,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/key-send/:id',
+    name: 'KeySend',
+    component: KeySend,
+    props: true,
     meta: {
       requiresAuth: true
     }

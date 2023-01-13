@@ -4,6 +4,7 @@ import router from './router'
 import store from './store'
 import axios from 'axios'
 import VueNoty from 'vuejs-noty'
+import 'vuejs-noty/dist/vuejs-noty.css'
 import VueProgressBar from 'vue-progressbar'
 import DataTable from "@andresouzaabreu/vue-data-table";
 import "@andresouzaabreu/vue-data-table/dist/DataTable.css";
@@ -13,6 +14,7 @@ import 'flatpickr/dist/flatpickr.css';
 Vue.component("data-table", DataTable);
 Vue.use(flatPickr);
 Vue.use(VueNoty);
+
 const options = {
   color: 'yellow',
   failedColor: 'red',

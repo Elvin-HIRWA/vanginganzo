@@ -1,19 +1,20 @@
 <template>
   <div class="row">
 
-    <!-- <div class="card mb-4"> -->
-      <button class="col-3 btn btn-info" @click="sendKey()">
-        <i class="pe-7s-paper-plane"></i>
-        <!-- trash icon -->
+    <div class="col-8">
+        <button class="col-4 btn btn-info active" @click="sendKey()">
+        <i class="fa fa-paper-plane"></i>
       </button>
-    <!-- </div> -->
+    </div>
 
-    <!-- <div class="card mb-4"> -->
-      <button class="col-3  btn btn-danger" @click="triggerSomeAction('view')">
+    <div class="col-4">
+      <!-- <div class="card mb-4"> -->
+        <button class="col-4  btn btn-danger active" @click="deleteKey()">
         <i class="fa fa-trash"></i>
         <!-- trash icon -->
       </button>
     <!-- </div> -->
+    </div>
   </div>
 </template>
 <script>
@@ -21,9 +22,20 @@ import axios from 'axios'
 export default {
   name: "ButtonDelete",
   methods: {
-    triggerSomeAction() {
-      // this.$store.commit(actionName, this.data)
-      this.$router.push(`/key-delete/${this.data.id}`)
+    async deleteKey() {
+      try {
+        const response = await axios.delete(
+          `/api/key-delete/${this.data.id}`
+        );
+        this.$Progress.finish();
+        this.$router.push("/keys").catch(() => {});
+      } catch (error) {
+        console.log(error.response.data[0]);
+        this.$noty.error(error.response.data[0]);
+        // this.$noty.error(error.response.data[0]);
+        this.$Progress.fail();
+        this.clicked = false;
+      }
     },
     sendKey() {
       // this.$store.commit(actionName, this.data)
