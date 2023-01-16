@@ -15,13 +15,15 @@
       <!-- Navbar Area -->
       <div class="oneMusic-main-menu">
         <div class="classy-nav-container breakpoint-off">
-          <div class="container">
+          <div class="container-fluid">
             <!-- Menu -->
             <nav class="classy-navbar justify-content-between" id="oneMusicNav">
-              <!-- Nav brand -->
+              <div style="background-color:white">
+                <!-- Nav brand -->
               <a href="index.html" class="nav-brand"
                 ><img src="../../public/assets/img/core-img/vanginganzo-logo.png" alt=""
               /></a>
+              </div>
 
               <!-- Navbar Toggler -->
               <div class="classy-navbar-toggler">
