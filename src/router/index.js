@@ -14,6 +14,10 @@ import EventsView from '../views/Bands/Event.vue'
 import NewEventView from '../views/Bands/NewEvent.vue'
 import EventUpdateView from '../views/Bands/EventUpdate.vue'
 
+import BlogsView from '../views/Bands/Blog.vue'
+import NewBlogView from '../views/Bands/NewBlog.vue'
+import BlogUpdateView from '../views/Bands/BlogUpdate.vue'
+
 import AdminView from '../views/Admins/Dashboard.vue'
 import PermissionView from '../views/Admins/Permission.vue'
 import UserView from '../views/Admins/User.vue'
@@ -103,6 +107,30 @@ const routes = [
     path: '/event/:id',
     name: 'EventUpdate',
     component: EventUpdateView,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/blogs',
+    name: 'Blogs',
+    component: BlogsView,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/newBlog',
+    name: 'NewBlog',
+    component: NewBlogView,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/blog/:id',
+    name: 'BlogUpdate',
+    component: BlogUpdateView,
     meta: {
       requiresAuth: true
     }

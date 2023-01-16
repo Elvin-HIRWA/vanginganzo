@@ -100,55 +100,48 @@
     </section>
     <!-- ##### Hero Area End ##### -->
 
-    <!-- ##### Buy Now Area Start ##### -->
-    <section
-      class="oneMusic-buy-now-area has-fluid bg-gray section-padding-100"
-    >
-      <div class="container-fluid">
-        <div class="row">
+    <!-- ##### Events Area Start ##### -->
+    <section class="oneMusic-buy-now-area has-fluid bg-gray section-padding-100">
+        <div class="container">
+          <div class="row">
           <div class="col-12">
             <div class="section-heading style-2">
-              <p>See what’s new</p>
-              <h2>Buy What’s New</h2>
+              <h2>Upcoming Events</h2>
             </div>
           </div>
         </div>
+            <div class="row">
 
-        <div class="row">
-          <!-- Single Album Area -->
+                <!-- Single Event Area -->
+                <div class="col-12 col-md-6 col-lg-4" v-for="(data,et) in entertainmentData" :key="et">
+                    <div class="single-event-area mb-30">
+                        <div class="event-thumbnail">
+                            <img :src="'http://localhost:89/' + data.img_path" alt="">
+                        </div>
+                        <div class="event-text">
+                            <h4>{{data.name}}</h4>
+                            <div class="event-meta-data">
+                                <a href="#" class="event-place">{{data.venue}}</a>
+                                <a href="#" class="event-date">{{ data.startTime }}</a>
+                            </div>
+                            <a href="#" class="btn see-more-btn">See Event</a>
+                        </div>
+                    </div>
+                </div>
 
-          <div class="col-12 col-sm-6 col-md-4 col-lg-2" v-for="(data,et) in entertainmentData" :key="et">
-            <div class="single-album-area wow fadeInUp" data-wow-delay="100ms" >
-                <div class="album-thumb">
-                <img :src="'http://localhost:89/' + data.img_path" alt="" />
-                
-              </div>
-                <div class="album-info">
-                <a href="#">
-                  <h5>{{data.name}}</h5>
-                </a>
-                <p>{{data.venue}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="text-align:right">{{ data.startTime }}</span></p>
-              </div>
             </div>
-            
-          </div>
-        </div>
 
-        <div class="row">
-          <div class="col-12">
-            <div
-              class="load-more-btn text-center wow fadeInUp"
-              data-wow-delay="300ms"
-            >
-              <a href="#" class="btn oneMusic-btn"
-                >Load More <i class="fa fa-angle-double-right"></i
-              ></a>
+            <div class="row">
+                <div class="col-12">
+                    <div class="load-more-btn text-center mt-70">
+                      <router-link id="oneMusic" class="btn oneMusic-btn" to="/event">Load More <i class="fa fa-angle-double-right"></i></router-link>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </section>
-    <!-- ##### Buy Now Area End ##### -->
+    <!-- ##### Events Area End ##### -->
+
 
     <!-- ##### Featured Artist Area Start ##### -->
     <section
@@ -648,7 +641,7 @@ export default {
 }
 
 .active {
-  background-color: black;
+  background-color: white;
 }
 
 #slide1 {
@@ -661,5 +654,9 @@ export default {
 
 #features {
   background-image: url(../../public/assets/img/bg-img/bg-4.jpg);
+}
+
+#oneMusic:hover{
+  color: white;
 }
 </style>

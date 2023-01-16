@@ -10,11 +10,14 @@
             </div>
             Dashboard
           </a>
-          <router-link to="/events">
-            <a class="nav-link">
+          <router-link to="/events" class="nav-link">
               <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-              Event
-            </a>
+              Events
+          </router-link>
+
+          <router-link to="/blogs" class="nav-link">
+              <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+              Blogs
           </router-link>
         </div>
       </div>
