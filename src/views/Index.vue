@@ -79,7 +79,7 @@
               <div class="col-12">
                 <div class="hero-slides-content text-center">
                   <h6 data-animation="fadeInUp" data-delay="100ms">
-                    Latest album
+                    Favorite entertainments
                   </h6>
                   <h2 data-animation="fadeInUp" data-delay="300ms">
                     Vangainganzo <span>Vangainganzo</span>
@@ -157,25 +157,22 @@
       id="features"
     >
       <div class="container">
-        <div class="row align-items-end">
+        <div class="row ">
           <div class="col-12 col-md-5 col-lg-4">
             <div class="featured-artist-thumb">
               <img src="../../public/assets/img/bg-img/1.jpeg" alt="" />
             </div>
           </div>
-          <div class="col-12 col-md-7 col-lg-8">
+          <div style="position: top" class="col-12 col-md-7 col-lg-8">
             <div class="featured-artist-content">
               <!-- Section Heading -->
               <div class="section-heading white text-left mb-30">
                 <h2>Buy What’s New</h2>
               </div>
-              <p>
-                Nam tristique ex vel magna tincidunt, ut porta nisl finibus.
-                Vivamus eu dolor eu quam varius rutrum. Fusce nec justo id sem
-                aliquam fringilla nec non lacus. Suspendisse eget lobortis nisi,
-                ac cursus odio. Vivamus nibh velit, rutrum at ipsum ac,
-                dignissim iaculis ante. Donec in velit non elit pulvinar
-                pellentesque et non eros.
+              <p style="color: white">
+                Using systems that help people to know where entertainment and music events are held. <br>
+                Vanginganzo Entertainment Locator is there to promote vanginganzo association and <br>
+                preserve Rwandan culture through promoting Rwandan orchestras, music bands and individual musicians. <br>
               </p>
             </div>
           </div>

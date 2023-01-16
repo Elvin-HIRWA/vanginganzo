@@ -18,7 +18,7 @@
                 <div class="icon mr-30">
                   <span class="icon-placeholder"></span>
                 </div>
-                <p>1481 Creekside Lane Avila Beach, CA 931</p>
+                <p>Kigali city, Rwanda</p>
               </div>
 
               <!-- Single Contact Info -->
@@ -26,7 +26,7 @@
                 <div class="icon mr-30">
                   <span class="icon-smartphone"></span>
                 </div>
-                <p>+53 345 7953 32453</p>
+                <p>+250 783 718 367</p>
               </div>
 
               <!-- Single Contact Info -->
@@ -34,18 +34,11 @@
                 <div class="icon mr-30">
                   <span class="icon-mail"></span>
                 </div>
-                <p>yourmail@gmail.com</p>
+                <p>vanginganzo@gmail.com</p>
               </div>
 
               <!-- Contact Social Info -->
               <div class="contact-social-info mt-50">
-                <a
-                  href="#"
-                  data-toggle="tooltip"
-                  data-placement="top"
-                  title="Pinterest"
-                  ><i class="fa fa-pinterest" aria-hidden="true"></i
-                ></a>
                 <a
                   href="#"
                   data-toggle="tooltip"
@@ -59,20 +52,6 @@
                   data-placement="top"
                   title="Twitter"
                   ><i class="fa fa-twitter" aria-hidden="true"></i
-                ></a>
-                <a
-                  href="#"
-                  data-toggle="tooltip"
-                  data-placement="top"
-                  title="Dribbble"
-                  ><i class="fa fa-dribbble" aria-hidden="true"></i
-                ></a>
-                <a
-                  href="#"
-                  data-toggle="tooltip"
-                  data-placement="top"
-                  title="Behance"
-                  ><i class="fa fa-behance" aria-hidden="true"></i
                 ></a>
                 <a
                   href="#"

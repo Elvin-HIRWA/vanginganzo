@@ -9,26 +9,12 @@
               ><span style="color: white; font-size: 30px">VANGINGANZO</span></a
             >
             <p class="copywrite-text">
-              <a href="#"
-                ><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                Copyright &copy; All rights reserved
+              <router-link to="/">Copyright &copy; All rights reserved
                 <i class="fa fa-heart-o" aria-hidden="true"></i>
-              </a>
-              by
-              <a href="https://colorlib.com" target="_blank">vanginganzo.com</a>
+              
+              by vanginganzo.com </router-link>
               <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
             </p>
-          </div>
-
-          <div class="col-12 col-md-6">
-            <div class="footer-nav">
-              <ul>
-                <li><router-link to="/">Home</router-link></li>
-                <li><router-link to="/event">Events</router-link></li>
-                <li><router-link to="/blog">Blogs</router-link></li>
-                <li><router-link to="/contact">Contacts</router-link></li>
-              </ul>
-            </div>
           </div>
         </div>
       </div>
