@@ -13,7 +13,7 @@
           >
             <div class="single-event-area mb-30">
               <div class="event-thumbnail">
-                <img :src="'http://localhost:89/' + data.img_path" alt="" />
+                <img :src="urlImage + data.img_path" alt="" />
               </div>
               <div class="event-text">
                 <h4>{{ data.name }}</h4>
@@ -26,7 +26,6 @@
             </div>
           </div>
         </div>
-
         <div class="row">
           <div class="col-12">
             <div class="load-more-btn text-center mt-70">
@@ -155,10 +154,11 @@ export default {
     },
     async getEventData() {
       this.$Progress.start();
+      console.log("here");
       try {
         const response = await axios.get("/api/entertainments/all");
 
-        this.urlImage = '"' + this.$store.state.urlPath + "/";
+        this.urlImage = localStorage.getItem('urlPath') + "/" ;
 
         response.data.forEach((el) => {
           this.entertainmentData.push({
@@ -170,6 +170,7 @@ export default {
             img_path: el.img_path,
           });
         });
+        console.log(this.entertainmentData);
         this.$Progress.finish();
       } catch (error) {}
     },

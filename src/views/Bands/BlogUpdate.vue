@@ -19,38 +19,20 @@
                         class="form-control"
                         id="inputName"
                         type="text"
-                        :placeholder="eventData.Name"
-                        v-model="eventData.name"
+                        :placeholder="blogData.title"
+                        v-model="blogData.title"
                       />
-                      <label for="inputEmail">Name</label>
+                      <label for="inputEmail">Title</label>
                     </div>
                     <div class="form-floating mb-3">
                       <input
                         class="form-control"
                         id="inputVenue "
                         type="text"
-                        :placeholder="eventData.venue"
-                        v-model="eventData.venue"
+                        :placeholder="blogData.description"
+                        v-model="blogData.description"
                       />
                       <label for="inputPassword">Venue</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                      <flat-pickr
-                        id="example-flatpickr-datetime"
-                        class="form-control bg-white"
-                        :config="config"
-                        :placeholder="eventData.startTime"
-                        v-model="eventData.startTime"
-                      ></flat-pickr>
-                    </div>
-                    <div class="form-floating mb-3">
-                      <flat-pickr
-                        id="example-flatpickr-datetime"
-                        class="form-control bg-white"
-                        :config="config"
-                        :placeholder="eventData.endTime"
-                        v-model="eventData.endTime"
-                      ></flat-pickr>
                     </div>
                     <!-- <div class="form-floating mb-3"> -->
                       <input
@@ -58,7 +40,7 @@
                         id="inputFlier "
                         type="file"
                         @change="onFileChanged"
-                        :placeholder="eventData.img_path"
+                        :placeholder="blogData.image_path"
                       />
                       <!-- <label for="inputPassword">Flier</label> -->
                     <!-- </div> -->
@@ -75,7 +57,6 @@
                       <button
                         style="margin-right: 10px"
                         class="btn btn-primary"
-                        @click="submitForm"
                       >
                         Add
                       </button>
@@ -106,10 +87,6 @@
     data(){
       return{
         userID: null,
-        name: null,
-        venue: null,
-        startTime: null,
-        endTime: null,
         imageFile: null,
         image: null,
         updatePicture: false,
@@ -119,11 +96,11 @@
           dateFormat: "Y-m-d H:i"
         },
 
-        eventData: null,
+        blogData: null,
       }
     },
     mounted() {
-    this.getEvent();
+    this.getBlog();
     this.getscript()
   },
     methods:{
@@ -142,20 +119,18 @@
         }
       });
     },
-      async getEvent() {
+      async getBlog() {
       this.$Progress.start();
 
       const id = this.$route.params.id;
 
       try {
-        const response = await axios.get(`/api/entertainments/get/${id}`);
+        const response = await axios.get(`/api/blog/get/${id}`);
 
         this.$Progress.finish();
 
-        this.eventData = response.data;
+        this.blogData = response.data;
 
-        this.status.showErrorPage = false;
-        this.status.loading = false;
       } catch (error) {
         this.$Progress.fail();
         console.log(error);
@@ -169,34 +144,21 @@
         this.clicked = true;
         this.userID = this.$store.state.userID
         const formData = new FormData();
+        console.log(this.blogData);
         formData.append("userID", this.userID);
-        formData.append("name", this.eventData.name);
-        formData.append("venue", this.eventData.venue);
-        formData.append("startTime", this.eventData.startTime);
-        formData.append("endTime", this.eventData.endTime);
+        formData.append("title", this.blogData.title);
+        formData.append("description", this.blogData.description);
         formData.append("image", this.image);
-
-        const datas = {
-          userID: this.userID,
-          name: this.eventData.name,
-          venue: this.eventData.venue,
-          startTime: this.eventData.startTime,
-          endTime: this.eventData.endTime,
-          image: this.image,
-        }
-
-        console.log(datas);
 
         const id = this.$route.params.id;
   
         try {
-          const response = await axios.post(`/api/entertainments/update/${id}`, formData, { headers: {'Content-Type': 'multipart/form-data' }});
+          const response = await axios.post(`/api/blog/update/${id}`, formData, { headers: {'Content-Type': 'multipart/form-data' }});
           this.$Progress.finish();
-          this.$router.push("/event").catch(()=>{});
+          this.$router.push("/blog").catch(()=>{});
           
         } catch (error) {
           this.$Progress.fail();
-          this.clicked = false;
         }
       },
       onFileChanged(event) {

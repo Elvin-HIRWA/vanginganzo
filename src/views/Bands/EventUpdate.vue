@@ -75,7 +75,6 @@
                       <button
                         style="margin-right: 10px"
                         class="btn btn-primary"
-                        @click="submitForm"
                       >
                         Add
                       </button>
@@ -181,7 +180,6 @@
           name: this.eventData.name,
           venue: this.eventData.venue,
           startTime: this.eventData.startTime,
-          endTime: this.eventData.endTime,
           image: this.image,
         }
 

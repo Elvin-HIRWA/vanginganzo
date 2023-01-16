@@ -16,7 +16,7 @@
             >
               <!-- Post Thumb -->
               <div class="blog-post-thumb mt-30">
-                <a href="#"><img :src="'http://localhost:89/' + data.image_path" alt="" /></a>
+                <a href="#"><img :src="urlImage + data.image_path" alt="" /></a>
                 <!-- Post Date -->
                 <div class="post-date">
                   <span>15</span>
@@ -128,7 +128,7 @@ export default {
       try {
         const response = await axios.get("/api/blog/get");
 
-        this.urlImage = '"' + this.$store.state.urlPath + "/";
+        this.urlImage = localStorage.getItem('urlPath') + "/" ;
 
         response.data.forEach((el) => {
           this.blogData.push({
