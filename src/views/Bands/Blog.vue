@@ -165,7 +165,7 @@
           await axios.delete(`/api/blog/delete/${id}`);
           this.$Progress.finish()
           this.$noty.success("Blog deleted");
-          this.$router.push("/event").catch(()=>{});
+          this.$router.push("/blogs").catch(()=>{});
         } catch (error) {
           this.$Progress.fail()
           this.displayUnauthorized(error);

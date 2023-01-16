@@ -57,7 +57,6 @@
                       <button
                         style="margin-right: 10px"
                         class="btn btn-primary"
-                        @click="submitForm"
                       >
                         Add
                       </button>
@@ -114,7 +113,7 @@
         try {
           const response = await axios.post("/api/blog/create", formData, { headers: {'Content-Type': 'multipart/form-data' }});
           this.$Progress.finish();
-          this.$router.push("/events").catch(()=>{});
+          this.$router.push("/blogs").catch(()=>{});
           
         } catch (error) {
           this.$Progress.fail();
