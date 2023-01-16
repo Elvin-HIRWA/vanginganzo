@@ -25,7 +25,7 @@
                 >
                   <div class="icon-box icon-box-pink">
                     <!-- <div class="icon"><i class="bx bxl-dribbble"></i></div> -->
-                    <div><img :src="'http://localhost:89/' + data.img_path" alt="image"></div>
+                    <div><img :src="urlImage + data.img_path" alt="image"></div>
                     <h4 class="title"><a href="">{{data.name}}</a></h4>
                     <p class="description">
                       Voluptatum deleniti atque corrupti quos dolores et quas
@@ -122,7 +122,7 @@ export default {
         const response = await axios.get("/api/entertainments/get");
         this.$Progress.finish();
 
-        this.urlImage = '"'+this.$store.state.urlPath+'/'
+        this.urlImage = localStorage.getItem('urlPath') + "/" ;
 
         response.data.forEach((el) => {
           this.entertainmentData.push({
