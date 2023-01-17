@@ -15,7 +15,7 @@
             >
           </div>
         </main>
-        <section class="services">
+        <section class="services" style="margin-top: 10px">
           <div class="container">
             <div class="row">
               <!-- <div > -->
@@ -23,15 +23,10 @@
                   class="col-md-6 col-lg-3 d-flex align-items-stretch"
                   data-aos="fade-up"
                 >
-                  <div class="icon-box icon-box-pink">
+                  <div >
                     <!-- <div class="icon"><i class="bx bxl-dribbble"></i></div> -->
                     <div><img :src="urlImage + data.img_path" alt="image"></div>
                     <h4 class="title"><a href="">{{data.name}}</a></h4>
-                    <p class="description">
-                      Voluptatum deleniti atque corrupti quos dolores et quas
-                      molestias excepturi sint occaecati cupiditate non
-                      provident
-                    </p>
                     
                     <button style="float: left;" class="btn btn-primary" @click="updateEvent(data.id)">
                           Edit
@@ -134,6 +129,8 @@ export default {
             img_path: el.img_path,
           });
         });
+
+        console.log(this.entertainmentData);
       } catch (error) {
         this.$Progress.fail();
         this.clicked = false;
@@ -165,7 +162,7 @@ export default {
       try {
         await axios.delete(`/api/entertainments/delete/${id}`);
         this.$Progress.finish()
-        this.$noty.success("Permission deleted");
+        this.$noty.success("event deleted");
         this.$router.push("/event").catch(()=>{});
       } catch (error) {
         this.$Progress.fail()

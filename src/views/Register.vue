@@ -98,7 +98,7 @@
 </template>
   
   <script>
-  import axios from "axios";
+import axios from "axios";
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
 export default {
@@ -135,13 +135,25 @@ export default {
         console.log("here");
         const token = response.data.token;
 
+        const permissionName = response.data.permissionName;
+
         localStorage.setItem("token", token);
 
         this.$store.commit("setToken", token);
 
         axios.defaults.headers.common["Authorization"] = "Bearer " + token;
 
-        this.$router.push("/admin");
+        if (permissionName === "Admin") {
+          const toPath = this.$route.query.to || "/admin";
+
+          this.$router.push(toPath).catch(() => {});
+          this.$Progress.finish();
+        } else if (permissionName === "Band") {
+          const toPath = this.$route.query.to || "/events";
+
+          this.$router.push(toPath).catch(() => {});
+          this.$Progress.finish();
+        }
       } catch (error) {
         this.$Progress.fail();
         this.clicked = false;

@@ -102,6 +102,8 @@ export default {
 
         const userID = response.data.userID;
 
+        const userName = response.data.userName;
+
         const permissionName = response.data.permissionName;
 
         localStorage.setItem("token", token);
@@ -109,6 +111,10 @@ export default {
         localStorage.setItem("permissionName", permissionName);
 
         localStorage.setItem("userID", userID);
+
+        localStorage.setItem("userName", userName);
+
+        this.$store.commit("setUserName", userName);
 
         this.$store.commit("setToken", token);
 
@@ -127,15 +133,14 @@ export default {
 
         }else if(permissionName === "Band"){
 
-          const toPath = this.$route.query.to || "/band";
+          const toPath = this.$route.query.to || "/events";
           
           this.$router.push(toPath).catch(()=>{});
           this.$Progress.finish();
         }
       } catch (error) {
-        // if(error.response.status === 403){
-          this.$noty.error("invalid Data");
-        // }
+          this.$noty.error(error.response.data.errors[0]);
+
         this.$Progress.fail();
       }
     },

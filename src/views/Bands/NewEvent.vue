@@ -35,7 +35,7 @@
                     <label for="inputPassword">Venue</label>
                   </div>
                   <div class="form-floating mb-3">
-                    <!-- <label for="inputPassword">Start Date</label> -->
+                    <label for="inputPassword" v-if="startTime == null">Start Date</label>
                     <flat-pickr
                       id="example-flatpickr-datetime"
                       class="form-control bg-white"
@@ -45,7 +45,7 @@
                     ></flat-pickr>
                   </div>
                   <div class="form-floating mb-3">
-                    <!-- <label for="inputPassword">End Date</label> -->
+                    <label for="inputPassword" v-if="endTime == null">End Date</label>
                     <flat-pickr
                       id="example-flatpickr-datetime"
                       class="form-control bg-white"
@@ -77,7 +77,6 @@
                     <button
                       style="margin-right: 10px"
                       class="btn btn-primary"
-                      @click="submitForm"
                     >
                       Add
                     </button>

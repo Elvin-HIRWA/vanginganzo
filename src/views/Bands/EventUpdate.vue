@@ -175,16 +175,6 @@
         formData.append("endTime", this.eventData.endTime);
         formData.append("image", this.image);
 
-        const datas = {
-          userID: this.userID,
-          name: this.eventData.name,
-          venue: this.eventData.venue,
-          startTime: this.eventData.startTime,
-          image: this.image,
-        }
-
-        console.log(datas);
-
         const id = this.$route.params.id;
   
         try {

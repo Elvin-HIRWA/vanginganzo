@@ -5,15 +5,16 @@
       <!-- Navbar Area -->
       <div class="oneMusic-main-menu">
         <div class="classy-nav-container breakpoint-off">
-          <div class="container">
+          <div class="container-fluid">
             <!-- Menu -->
             <nav class="classy-navbar justify-content-between" id="oneMusicNav">
               <!-- Nav brand -->
+              <div style="background-color:white">
+                <!-- Nav brand -->
               <a href="index.html" class="nav-brand"
-                ><img
-                  src="../../public/assets/img/core-img/vanginganzo-logo.png"
-                  alt=""
+                ><img src="../../public/assets/img/core-img/vanginganzo-logo.png" alt=""
               /></a>
+              </div>
 
               <!-- Navbar Toggler -->
               <div class="classy-navbar-toggler">
@@ -167,7 +168,7 @@
             <div class="featured-artist-content">
               <!-- Section Heading -->
               <div class="section-heading white text-left mb-30">
-                <h2>Buy What’s New</h2>
+                <h2>Vanginganzo System</h2>
               </div>
               <p style="color: white">
                 Using systems that help people to know where entertainment and music events are held. <br>

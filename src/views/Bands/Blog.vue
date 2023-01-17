@@ -6,12 +6,12 @@
         <div id="layoutSidenav_content">
           <main>
             <div class="container-fluid px-4">
-              <h1 class="mt-4">Event</h1>
+              <h1 class="mt-4">Blog</h1>
               <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active">Event</li>
+                <li class="breadcrumb-item active">Blog</li>
               </ol>
               <router-link class="btn btn-secondary active" to="/newBlog"
-                >Add New Event</router-link
+                >Add New Blog</router-link
               >
             </div>
           </main>

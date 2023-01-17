@@ -19,8 +19,8 @@
                 <a href="#"><img :src="urlImage + data.image_path" alt="" /></a>
                 <!-- Post Date -->
                 <div class="post-date">
-                  <span>15</span>
-                  <span>June ‘18</span>
+                  <span>{{ data.day }}</span>
+                  <span>{{ data.month }} ‘{{ data.year }}</span>
                 </div>
               </div>
 
@@ -32,9 +32,7 @@
                 >
                 <!-- Post Meta -->
                 <div class="post-meta d-flex mb-30">
-                  <p class="post-author">By<a href="#"> Admin</a></p>
-                  <p class="tags">in<a href="#"> Events</a></p>
-                  <p class="tags"><a href="#">2 Comments</a></p>
+                  <p class="post-author">By<a href="#"> {{data.userName}}</a></p>
                 </div>
                 <!-- Post Excerpt -->
                 <p>
@@ -126,7 +124,7 @@ export default {
     async getBlogData() {
       this.$Progress.start();
       try {
-        const response = await axios.get("/api/blog/get");
+        const response = await axios.get("/api/blog/all");
 
         this.urlImage = localStorage.getItem('urlPath') + "/" ;
 
@@ -136,8 +134,14 @@ export default {
             title: el.title,
             description: el.description,
             image_path: el.image_path,
+            month: el.month,
+            day: el.day,
+            year: el.year,
+            userName: el.userName
           });
         });
+
+        console.log(this.blogData);
         this.$Progress.finish();
       } catch (error) {}
     },
